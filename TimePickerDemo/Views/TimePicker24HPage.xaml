@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    x:Class="TimePickerDemo.Views.TimePicker24HPage"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:custom="clr-namespace:TimePickerDemo.CustomControls;assembly=TimePickerDemo" 
+    BackgroundColor="White">
+   
+    <ContentPage.Content>
+        <StackLayout 
+            Padding="30,80,30,0" 
+            Spacing="40" 
+            HorizontalOptions="FillAndExpand" 
+            VerticalOptions="StartAndExpand">
+            
+            <Label 
+                Text="TimePicker 24H Format" 
+                HorizontalOptions="CenterAndExpand" 
+                TextColor="Gray" 
+                FontSize="20"/>
+
+            <custom:CustomTimePicker24H  
+                TextColor="Gray" 
+                Format="HH:mm" 
+                HeightRequest="40" 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="StartAndExpand"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>
