@@ -3,7 +3,7 @@ using Android.App;
 using Android.Content;
 using Android.Runtime;
 
-using TimePickerDemo.CustomControls;
+using TimePickerDemo;
 using TimePickerDemo.Droid;
 
 using Xamarin.Forms;
@@ -24,7 +24,6 @@ namespace TimePickerDemo.Droid
         Context CurrentContext => Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity;
         IElementController ElementController => Element as IElementController;
 
-
         public void OnTimeSet(Android.Widget.TimePicker view, int hourOfDay, int minute)
         {
             var time = new TimeSpan(hourOfDay, minute, 0);
@@ -35,19 +34,38 @@ namespace TimePickerDemo.Droid
             ClearFocus();
         }
 
-        protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.TimePicker> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<TimePicker> e)
         {
             base.OnElementChanged(e);
 
             SetNativeControl(new Android.Widget.EditText(CurrentContext));
 
-            Control.Click += Control_Click;
-            Control.Text = DateTime.Now.ToString("HH:mm");
-            Control.KeyListener = null;
-            Control.FocusChange += Control_FocusChange;
+            if (Control != null)
+            {
+                Control.Click += Control_Click;
+                Control.KeyListener = null;
+                Control.FocusChange += Control_FocusChange;
+
+                if (Element != null && !Element.Time.Equals(default(TimeSpan)))
+                    Control.Text = Element.Time.ToString(@"hh\:mm");
+                else
+                    Control.Text = DateTime.Now.ToString("HH:mm");
+            }
         }
 
-        void Control_FocusChange(object sender, Android.Views.View.FocusChangeEventArgs e)
+        protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+
+            switch (e.PropertyName)
+            {
+                case nameof(CustomTimePicker24H.Time):
+                    System.Diagnostics.Debug.WriteLine("Time Changed");
+                    break;
+            }
+        }
+
+        void Control_FocusChange(object sender, FocusChangeEventArgs e)
         {
             if (e.HasFocus)
             {

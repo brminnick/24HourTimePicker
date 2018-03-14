@@ -5,13 +5,14 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<Folder Include="CustomControls\" />
-		<Folder Include="Views\" />
+		<Folder Include="Pages\" />
+		<Folder Include="ViewModel\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Compile Update="Views\TimePicker24HPage.xaml.cs">
+	  <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\TimePicker24HPage.xaml.cs">
 	    <DependentUpon>TimePicker24HPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace TimePickerDemo.CustomControls
+namespace TimePickerDemo
 {
     public class CustomTimePicker24H : TimePicker
     {

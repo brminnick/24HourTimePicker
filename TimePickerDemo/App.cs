@@ -4,6 +4,6 @@ namespace TimePickerDemo
 {
     public class App : Application
     {
-        public App() => MainPage = new Views.TimePicker24HPage();
+        public App() => MainPage = new NavigationPage(new TimePickerPage());
     }
 }
