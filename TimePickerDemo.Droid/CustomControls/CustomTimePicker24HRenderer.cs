@@ -1,7 +1,11 @@
 ﻿using System;
+
 using Android.App;
+using Android.Text;
 using Android.Content;
 using Android.Runtime;
+
+using Java.Lang;
 
 using TimePickerDemo;
 using TimePickerDemo.Droid;
@@ -43,7 +47,6 @@ namespace TimePickerDemo.Droid
             if (Control != null)
             {
                 Control.Click += Control_Click;
-                Control.KeyListener = null;
                 Control.FocusChange += Control_FocusChange;
 
                 if (Element != null && !Element.Time.Equals(default(TimeSpan)))
@@ -71,7 +74,9 @@ namespace TimePickerDemo.Droid
         void ShowTimePicker()
         {
             if (_dialog == null)
-                _dialog = new TimePickerDialog(CurrentContext, this, DateTime.Now.Hour, DateTime.Now.Minute, true);
+                _dialog = new TimePickerDialog(CurrentContext, this, Element.Time.Hours, Element.Time.Minutes, true);
+
+            _dialog.UpdateTime(Element.Time.Hours, Element.Time.Minutes);
 
             _dialog.Show();
         }

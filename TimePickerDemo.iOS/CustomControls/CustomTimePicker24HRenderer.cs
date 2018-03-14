@@ -30,5 +30,5 @@ namespace TimePickerDemo.iOS
                     Control.Text = DateTime.Now.ToString("HH:mm");
             }
         }
-	}
+    }
 }
