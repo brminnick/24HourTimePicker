@@ -53,18 +53,6 @@ namespace TimePickerDemo.Droid
             }
         }
 
-        protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            base.OnElementPropertyChanged(sender, e);
-
-            switch (e.PropertyName)
-            {
-                case nameof(CustomTimePicker24H.Time):
-                    System.Diagnostics.Debug.WriteLine("Time Changed");
-                    break;
-            }
-        }
-
         void Control_FocusChange(object sender, FocusChangeEventArgs e)
         {
             if (e.HasFocus)
