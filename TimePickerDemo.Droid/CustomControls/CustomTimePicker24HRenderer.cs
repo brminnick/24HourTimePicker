@@ -1,15 +1,9 @@
 ﻿using System;
-
 using Android.App;
-using Android.Text;
 using Android.Content;
 using Android.Runtime;
-
-using Java.Lang;
-
 using TimePickerDemo;
 using TimePickerDemo.Droid;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
@@ -18,17 +12,16 @@ namespace TimePickerDemo.Droid
 {
     public class CustomTimePicker24HRenderer : ViewRenderer<TimePicker, Android.Widget.EditText>, TimePickerDialog.IOnTimeSetListener, IJavaObject, IDisposable
     {
-        TimePickerDialog _dialog;
+        TimePickerDialog? _dialog;
 
         public CustomTimePicker24HRenderer(Context context) : base(context)
         {
 
         }
 
-        Context CurrentContext => Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity;
-        IElementController ElementController => Element as IElementController;
+        IElementController ElementController => Element;
 
-        public void OnTimeSet(Android.Widget.TimePicker view, int hourOfDay, int minute)
+        public void OnTimeSet(Android.Widget.TimePicker? view, int hourOfDay, int minute)
         {
             var time = new TimeSpan(hourOfDay, minute, 0);
             Element.SetValue(TimePicker.TimeProperty, time);
@@ -42,21 +35,21 @@ namespace TimePickerDemo.Droid
         {
             base.OnElementChanged(e);
 
-            SetNativeControl(new Android.Widget.EditText(CurrentContext));
+            SetNativeControl(new Android.Widget.EditText(Context));
 
             if (Control != null)
             {
-                Control.Click += Control_Click;
-                Control.FocusChange += Control_FocusChange;
+                Control.Click += HandleClick;
+                Control.FocusChange += HandleFocusChange;
 
-                if (Element != null && !Element.Time.Equals(default(TimeSpan)))
+                if (Element != null && Element.Time != default)
                     Control.Text = Element.Time.ToString(@"hh\:mm");
                 else
                     Control.Text = DateTime.Now.ToString("HH:mm");
             }
         }
 
-        void Control_FocusChange(object sender, FocusChangeEventArgs e)
+        void HandleFocusChange(object sender, FocusChangeEventArgs e)
         {
             if (e.HasFocus)
             {
@@ -69,12 +62,11 @@ namespace TimePickerDemo.Droid
             }
         }
 
-        void Control_Click(object sender, EventArgs e) => ShowTimePicker();
+        void HandleClick(object sender, EventArgs e) => ShowTimePicker();
 
         void ShowTimePicker()
         {
-            if (_dialog == null)
-                _dialog = new TimePickerDialog(CurrentContext, this, Element.Time.Hours, Element.Time.Minutes, true);
+            _dialog ??= new TimePickerDialog(Context, this, Element.Time.Hours, Element.Time.Minutes, true);
 
             _dialog.UpdateTime(Element.Time.Hours, Element.Time.Minutes);
 

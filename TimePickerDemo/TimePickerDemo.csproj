@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetFramework>netstandard2.1</TargetFramework>
+        <Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
 		<Folder Include="CustomControls\" />
 		<Folder Include="Pages\" />
-		<Folder Include="ViewModel\" />
+		<Folder Include="ViewModels\" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
+		<PackageReference Include="Xamarin.Forms" Version="4.7.0.1179" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\TimePicker24HPage.xaml.cs">

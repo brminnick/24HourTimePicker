@@ -1,12 +1,8 @@
 ﻿using System;
-
 using Foundation;
-
 using TimePickerDemo;
 using TimePickerDemo.iOS;
-
 using UIKit;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
@@ -19,12 +15,14 @@ namespace TimePickerDemo.iOS
         {
             base.OnElementChanged(e);
 
-            if (Control != null)
+            if (Control?.InputView != null)
             {
+                Control.TextAlignment = UITextAlignment.Center;
+
                 var timePicker = (UIDatePicker)Control.InputView;
                 timePicker.Locale = new NSLocale("no_nb");
 
-                if (Element != null && !Element.Time.Equals(default(TimeSpan)))
+                if (Element != null && Element.Time != default)
                     Control.Text = Element.Time.ToString(@"hh\:mm");
                 else
                     Control.Text = DateTime.Now.ToString("HH:mm");

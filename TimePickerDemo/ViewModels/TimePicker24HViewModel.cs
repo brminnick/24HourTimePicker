@@ -7,13 +7,12 @@ namespace TimePickerDemo
     public class TimePicker24HViewModel : INotifyPropertyChanged
     {
         TimeSpan _time;
-        string _timeLabelText;
 
         public TimePicker24HViewModel() => _time = new TimeSpan(5, 20, 0);
 
-		public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-		public string TimeLabelText => _timeLabelText;
+        public string TimeLabelText => Time.ToString(@"hh\:mm");
 
         public TimeSpan Time
         {
@@ -22,12 +21,11 @@ namespace TimePickerDemo
             {
                 _time = value;
                 OnPropertyChanged();
-                _timeLabelText = value.ToString(@"hh\:mm");
                 OnPropertyChanged(nameof(TimeLabelText));
             }
         }
 
-        void OnPropertyChanged([CallerMemberName] string propertyName = "") => 
+        void OnPropertyChanged([CallerMemberName] string propertyName = "") =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
