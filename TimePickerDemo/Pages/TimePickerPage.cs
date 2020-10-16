@@ -3,7 +3,7 @@ using Xamarin.Forms.Markup;
 
 namespace TimePickerDemo
 {
-    public class TimePickerPage : ContentPage
+    class TimePickerPage : ContentPage
     {
         public TimePickerPage()
         {

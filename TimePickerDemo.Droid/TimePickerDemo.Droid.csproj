@@ -25,6 +25,7 @@
         <DefineConstants>DEBUG;</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
+        <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <DebugSymbols>true</DebugSymbols>
@@ -43,10 +44,8 @@
         <Reference Include="Mono.Android" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="4.7.0.1179" />
-        <PackageReference Include="Xamarin.Google.Android.Material">
-          <Version>1.0.0.1</Version>
-        </PackageReference>
+        <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
+        <PackageReference Include="Xamarin.Google.Android.Material" Version="1.1.0.5-rc3" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="MainActivity.cs" />

@@ -10,7 +10,7 @@
 		<Folder Include="ViewModels\" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Xamarin.Forms" Version="4.7.0.1179" />
+		<PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\TimePicker24HPage.xaml.cs">
