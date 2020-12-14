@@ -44,8 +44,8 @@
         <Reference Include="Mono.Android" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
-        <PackageReference Include="Xamarin.Google.Android.Material" Version="1.1.0.5-rc3" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.1791-pre5" />
+        <PackageReference Include="Xamarin.Google.Android.Material" Version="1.2.1" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="MainActivity.cs" />
