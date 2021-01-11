@@ -26,7 +26,7 @@ namespace TimePickerDemo
                     new Label().CenterExpand().TextCenter()
                      .Bind(Label.TextProperty, nameof(TimePicker24HViewModel.TimeLabelText))
                 }
-            }.CenterExpand().Padding(30,0);
+            }.CenterExpand().Padding(30, 0);
         }
     }
 }
