@@ -10,8 +10,8 @@
 		<Folder Include="ViewModels\" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
-		<PackageReference Include="Xamarin.CommunityToolkit.Markup" Version="1.0.0" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+		<PackageReference Include="Xamarin.CommunityToolkit.Markup" Version="1.2.0-pre2" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\TimePicker24HPage.xaml.cs">
